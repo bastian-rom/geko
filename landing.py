@@ -1,8 +1,33 @@
 from flask import Flask, render_template
 import os
 
-app = Flask(__name__)
+from extensions import db, migrate, login_manager, bcrypt, admin
+from auth import auth_bp
+from admin import init_admin
 
+app = Flask(__name__, template_folder='templates')
+
+# Configuration
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///dev.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Initialize extensions
+db.init_app(app)
+migrate.init_app(app, db)
+login_manager.init_app(app)
+bcrypt.init_app(app)
+admin.init_app(app)
+
+# Configure login view
+login_manager.login_view = 'auth.login'
+login_manager.login_message_category = 'warning'
+
+# Register blueprints and admin views
+app.register_blueprint(auth_bp)
+init_admin(app, admin)
+
+# Existing simple routes
 @app.route('/')
 def home():
     return render_template('index.html')
