@@ -4,9 +4,10 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    /* Beehive pattern background */
     background-image: 
-        repeating-linear-gradient(120deg, #FFE066 0px, #FFE066 40px, transparent 40px, transparent 80px),
-        repeating-linear-gradient(60deg, #FFD700 0px, #FFD700 40px, transparent 40px, transparent 80px);
+      repeating-linear-gradient(120deg, #FFE066 0px, #FFE066 40px, transparent 40px, transparent 80px),
+      repeating-linear-gradient(60deg, #FFD700 0px, #FFD700 40px, transparent 40px, transparent 80px);
     background-size: 80px 80px;
 }
 
@@ -15,7 +16,7 @@ nav {
     padding: 18px 28px;
     display: flex;
     align-items: center;
-    box-shadow: 0 1px 8px rgba(244, 180, 62, 0.22);
+    box-shadow: 0 1px 8px rgba(244,180,62,0.22);
     border-bottom: 4px solid #FFB600;
 }
 nav a {
@@ -23,9 +24,9 @@ nav a {
     margin-right: 24px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1em;
-    letter-spacing: 0.04em;
+    font-size: 1.08em;
     transition: color 0.2s;
+    letter-spacing: 0.01em;
 }
 nav a:hover {
     color: #FF5E00;
@@ -36,7 +37,7 @@ nav a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    padding: 36px;
+    padding: 36px 0;
     justify-content: center;
 }
 
@@ -99,16 +100,16 @@ ul {
     border-radius: 18px;
     padding: 24px 32px;
     margin: 20px auto;
-    max-width: 520px;
+    max-width: 540px;
     box-shadow: 0 4px 16px #FFECB344;
     border: 1.5px solid #FFD54F;
 }
 
-/* Responsive */
+/* Responsive honeycomb */
 @media (max-width: 800px) {
     .honeycomb {
         gap: 14px;
-        padding: 14px;
+        padding: 14px 0;
     }
     .hex-cell {
         width: 80px;
