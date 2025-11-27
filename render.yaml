@@ -1,6 +1,13 @@
 services:
   - type: web
-    name: roomers-landing
+    name: roomers-app
     env: python
-    buildCommand: ""
-    startCommand: python app.py
+    buildCommand: |
+      pip install -r requirements.txt
+      flask db upgrade
+    startCommand: gunicorn main:app
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SECRET_KEY
+        sync: false
